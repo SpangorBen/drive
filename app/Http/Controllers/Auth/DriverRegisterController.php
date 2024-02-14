@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
+class DriverRegisterController extends Controller
 {
     /**
      * Display the registration view.
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('auth.driver');
     }
 
     /**
@@ -46,8 +46,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        $user->assignRole('user');
+        $user->assignRole('driver');
 
-        return redirect(RouteServiceProvider::USER_FORM);
+        return redirect(RouteServiceProvider::DRIVER_FORM);
     }
 }

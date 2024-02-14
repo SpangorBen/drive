@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <h1 class="text-white">Passanger</h1>
-    <form method="POST" action="{{ route('register') }}">
+    <h1 class="text-white">Driver</h1>
+    <form method="POST" action="{{ route('driver') }}">
         @csrf
 
         <!-- Name -->

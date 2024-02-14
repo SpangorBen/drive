@@ -29,6 +29,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if (auth()->user()->hasRole('driver')){
+            return redirect()->intended(RouteServiceProvider::DRIVER_FORM);
+        } else if (auth()->user()->hasRole('user')){
+            return redirect()->intended(RouteServiceProvider::USER_FORM);
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

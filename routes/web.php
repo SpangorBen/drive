@@ -22,6 +22,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/driver/form', function () {
+    return view('driver.form');
+})->middleware(['auth', 'role:driver'])->name('driver_form');
+
+Route::get('/user/form', function () {
+    return view('user.form');
+})->middleware(['auth', 'role:user'])->name('user_form');
+
 Route::get('/admin/index', function () {
     return view('admin.index');
 })->middleware(['auth', 'role:admin'])->name('admin.index');;
