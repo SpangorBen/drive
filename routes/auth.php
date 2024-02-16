@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\DriverRegisterController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\DriverController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -22,6 +23,11 @@ Route::middleware('guest')->group(function () {
                 ->name('driver');
 
     Route::post('driver', [DriverRegisterController::class, 'store']);
+                
+    // Route::get('driver', [DriverController::class, 'create'])
+    //             ->name('driverData');
+                
+    // Route::post('driver', [DriverController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');

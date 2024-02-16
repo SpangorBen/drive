@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
     <title>Form</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
             <p class="text-gray-500 mb-6">Form is mobile responsive. Give it a try.</p>
     
             <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
-            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+            <form action="{{ route('driver.update', ['user' => Auth::id()])}}" method="POST" class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">@csrf @method("PUT")
                 <div class="text-gray-600">
                 <p class="font-medium text-lg">Personal Details</p>
                 <p>Please fill out all the fields.</p>
@@ -28,95 +29,114 @@
                 <div class="lg:col-span-2">
                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                     <div class="md:col-span-5">
-                    <label for="full_name">Full Name</label>
-                    <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                    <label for="full_name">Little Description About You</label>
+                    <input type="text" name="description" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
                     </div>
-    
+
+                    <div class="md:col-span-5 mt-4">
+                    <label for="email">Immatrucilation</label>
+                    <input type="text" name="immat" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                    </div>
+
+                    <div class="md:col-span-2 mt-4">
+                        Select Your Type Of Vehicle:
+                    </div>
+
                     <div class="md:col-span-5">
-                    <label for="email">Email Address</label>
-                    <input type="text" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="email@domain.com" />
+                        <div class="radio-inputs ml-[8rem]">
+                            <label>
+                                <input class="radio-input" type="radio" name="car" value="suv">
+                                    <span class="radio-tile">
+                                        <span class="radio-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+
+                                                <defs>
+                                                </defs>
+                                                <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                                                    <path d="M 75.442 64.767 c -4.577 0 -8.301 -3.724 -8.301 -8.3 s 3.724 -8.3 8.301 -8.3 c 4.576 0 8.3 3.724 8.3 8.3 S 80.018 64.767 75.442 64.767 z M 75.442 50.167 c -3.475 0 -6.301 2.826 -6.301 6.3 s 2.826 6.3 6.301 6.3 c 3.474 0 6.3 -2.826 6.3 -6.3 S 78.915 50.167 75.442 50.167 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                    <path d="M 17.687 64.767 c -4.577 0 -8.3 -3.724 -8.3 -8.3 s 3.724 -8.3 8.3 -8.3 s 8.3 3.724 8.3 8.3 S 22.264 64.767 17.687 64.767 z M 17.687 50.167 c -3.474 0 -6.3 2.826 -6.3 6.3 s 2.826 6.3 6.3 6.3 c 3.474 0 6.3 -2.826 6.3 -6.3 S 21.16 50.167 17.687 50.167 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                    <path d="M 11.06 60.531 c -0.121 0 -0.244 -0.021 -0.364 -0.068 L 3.858 57.79 C 1.514 56.875 0 54.657 0 52.141 v -8.826 c 0 -1.093 0.295 -2.166 0.855 -3.105 l 7.279 -12.222 c 1.012 -1.7 2.87 -2.755 4.848 -2.755 h 39.417 c 2.046 0 4 0.875 5.363 2.4 l 6.122 6.849 l 19.194 1.68 c 3.032 0.265 5.464 2.655 5.781 5.682 l 1.099 10.475 c 0.404 3.848 -2.272 7.336 -6.095 7.94 l -1.643 0.26 c -0.543 0.081 -1.057 -0.287 -1.144 -0.833 c -0.086 -0.545 0.287 -1.057 0.833 -1.144 l 1.642 -0.259 c 2.77 -0.438 4.711 -2.967 4.418 -5.756 l -1.099 -10.475 c -0.219 -2.077 -1.887 -3.716 -3.967 -3.898 L 63.317 36.44 c -0.254 -0.022 -0.489 -0.14 -0.658 -0.33 l -6.387 -7.145 c -0.984 -1.102 -2.396 -1.733 -3.872 -1.733 H 12.982 c -1.277 0 -2.477 0.682 -3.129 1.779 l -7.28 12.222 C 2.198 41.863 2 42.583 2 43.315 v 8.826 c 0 1.687 1.015 3.173 2.586 3.786 l 6.839 2.673 c 0.514 0.201 0.768 0.781 0.567 1.296 C 11.838 60.29 11.46 60.531 11.06 60.531 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                    <path d="M 68.816 60.531 H 24.314 c -0.552 0 -1 -0.447 -1 -1 s 0.448 -1 1 -1 h 44.502 c 0.553 0 1 0.447 1 1 S 69.368 60.531 68.816 60.531 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                    <path d="M 56.207 40.901 H 10.83 c -0.347 0 -0.668 -0.18 -0.851 -0.475 c -0.183 -0.295 -0.199 -0.663 -0.043 -0.973 l 6.844 -13.668 c 0.248 -0.494 0.849 -0.694 1.342 -0.446 c 0.494 0.247 0.694 0.848 0.446 1.342 l -6.119 12.22 h 43.758 c 1.023 0 2.017 -0.365 2.796 -1.027 l 3.753 -3.191 c 0.418 -0.357 1.052 -0.308 1.409 0.114 c 0.357 0.421 0.307 1.052 -0.114 1.41 l -3.753 3.191 C 59.157 40.367 57.704 40.901 56.207 40.901 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                    <path d="M 75.44 57.47 c -0.27 0 -0.52 -0.11 -0.71 -0.3 c -0.18 -0.19 -0.29 -0.44 -0.29 -0.7 c 0 -0.14 0.03 -0.26 0.08 -0.39 c 0.05 -0.12 0.12 -0.23 0.21 -0.32 c 0.051 -0.05 0.101 -0.09 0.16 -0.12 c 0.05 -0.04 0.11 -0.07 0.17 -0.1 c 0.061 -0.021 0.12 -0.04 0.19 -0.05 c 0.319 -0.07 0.67 0.04 0.899 0.27 c 0.091 0.09 0.16 0.2 0.21 0.32 c 0.051 0.13 0.08 0.25 0.08 0.39 c 0 0.26 -0.1 0.51 -0.29 0.7 c -0.1 0.1 -0.21 0.17 -0.33 0.22 C 75.7 57.44 75.57 57.47 75.44 57.47 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                    <path d="M 17.69 57.47 c -0.27 0 -0.52 -0.11 -0.71 -0.3 c -0.19 -0.18 -0.29 -0.44 -0.29 -0.7 c 0 -0.14 0.02 -0.26 0.07 -0.39 c 0.05 -0.12 0.13 -0.23 0.22 -0.32 c 0.37 -0.37 1.04 -0.37 1.41 0 c 0.19 0.18 0.3 0.44 0.3 0.71 c 0 0.26 -0.11 0.51 -0.3 0.7 c -0.09 0.1 -0.2 0.17 -0.32 0.22 C 17.95 57.44 17.82 57.47 17.69 57.47 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                    <path d="M 43.05 40.901 c -0.452 0 -0.861 -0.308 -0.971 -0.767 l -3.28 -13.668 C 38.67 25.93 39 25.39 39.538 25.261 c 0.54 -0.127 1.077 0.202 1.206 0.739 l 3.28 13.668 c 0.129 0.537 -0.202 1.077 -0.739 1.206 C 43.206 40.893 43.127 40.901 43.05 40.901 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                    <path d="M 22.262 40.902 c -0.108 0 -0.218 -0.018 -0.327 -0.055 c -0.522 -0.18 -0.799 -0.75 -0.619 -1.272 l 4.72 -13.668 c 0.18 -0.521 0.748 -0.799 1.272 -0.619 c 0.522 0.18 0.799 0.75 0.619 1.272 l -4.72 13.668 C 23.064 40.642 22.677 40.902 22.262 40.902 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                </g>
+                                                </svg>
+                                            {{-- <svg stroke="currentColor" xml:space="preserve" viewBox="0 0 493.407 493.407" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Capa_1" version="1.1" width="200px" height="200px" fill="none"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path d="M488.474,270.899c-12.647-37.192-47.527-62.182-86.791-62.182c-5.892,0-11.728,0.749-17.499,1.879l-34.324-100.94 c-1.71-5.014-6.417-8.392-11.721-8.392H315.02c-6.836,0-12.382,5.547-12.382,12.382c0,6.836,5.545,12.381,12.382,12.381h14.252 l12.462,36.645H206.069v-21.998l21.732-2.821c3.353-0.434,6.135-3.079,6.585-6.585c0.54-4.183-2.402-8.013-6.585-8.553l-68.929-8.94 c-1.362-0.168-2.853-0.185-4.281,0c-9.116,1.186-15.55,9.537-14.373,18.653c1.185,9.118,9.537,15.55,18.653,14.364l22.434-2.909 v26.004l-41.255,52.798c-14.059-8.771-30.592-13.93-48.349-13.93C41.135,208.757,0,249.885,0,300.443 c0,50.565,41.135,91.7,91.701,91.7c44.882,0,82.261-32.437,90.113-75.095h33.605v12.647h-5.909c-4.563,0-8.254,3.693-8.254,8.254 c0,4.563,3.691,8.254,8.254,8.254h36.58c4.563,0,8.254-3.691,8.254-8.254c0-4.561-3.691-8.254-8.254-8.254h-5.908v-12.647h5.545 c3.814,0,7.409-1.756,9.755-4.756l95.546-122.267l9.776,28.729c-17.854,8.892-32.444,22.965-41.409,41.168 c-10.825,21.973-12.438,46.842-4.553,70.034c12.662,37.201,47.55,62.189,86.815,62.189c10.021,0,19.951-1.645,29.519-4.9 c23.191-7.885,41.926-24.329,52.744-46.302C494.746,318.966,496.367,294.09,488.474,270.899z M143.46,258.542 c7.698,9.488,12.776,21.014,14.349,33.742h-40.717L143.46,258.542z M91.701,367.379c-36.912,0-66.938-30.026-66.938-66.936 c0-36.904,30.026-66.923,66.938-66.923c12.002,0,23.11,3.427,32.864,8.981l-42.619,54.54c-2.917,3.732-3.448,8.794-1.378,13.05 c2.08,4.256,6.4,6.957,11.134,6.957h64.592C148.861,345.906,122.84,367.379,91.701,367.379z M239.69,292.284h-56.707 c-1.839-20.667-10.586-39.329-23.868-53.782l22.191-28.398v32.47c0,6.836,5.545,12.381,12.381,12.381 c6.836,0,12.382-5.545,12.382-12.381v-55.138h115.553L239.69,292.284z M383.546,285.618l6.384,18.79 c1.75,5.151,6.562,8.392,11.721,8.392c1.321,0,2.667-0.21,3.99-0.661c6.471-2.201,9.93-9.23,7.729-15.711l-6.336-18.637 c7.731,1.838,14.221,7.312,16.855,15.083c2.024,5.94,1.613,12.309-1.161,17.935c-2.773,5.626-7.569,9.835-13.509,11.858 c-12.068,4.078-25.716-2.717-29.785-14.671C376.735,300.055,378.597,291.689,383.546,285.618z M461.712,329.994 c-7.908,16.042-21.579,28.044-38.507,33.808c-6.997,2.378-14.244,3.578-21.547,3.578c-28.664,0-54.129-18.249-63.374-45.399 c-5.757-16.926-4.571-35.081,3.328-51.112c6.047-12.27,15.494-22.112,27.165-28.666l8.981,26.416 c-13.414,10.108-19.644,27.931-13.954,44.691c5.522,16.227,20.732,27.124,37.853,27.124c4.378,0,8.707-0.725,12.882-2.145 c10.108-3.434,18.282-10.607,22.999-20.184c4.723-9.585,5.425-20.435,1.982-30.551c-5.545-16.299-21.57-26.787-38.289-26.818 l-8.997-26.472c3.128-0.453,6.28-0.783,9.448-0.783c28.658,0,54.112,18.242,63.351,45.399 C470.788,295.799,469.613,313.96,461.712,329.994z"></path> </g></svg> --}}
+                                        </span>
+                                        <span class="radio-label">SUV</span>
+                                    </span>
+                            </label>
+                            <label>
+                                <input checked="" class="radio-input" type="radio" name="car" value="car">
+                                <span class="radio-tile">
+                                    <span class="radio-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+
+                                            <defs>
+                                            </defs>
+                                            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                                                <path d="M 71.646 61.84 c -4.527 0 -8.21 -3.683 -8.21 -8.21 s 3.683 -8.21 8.21 -8.21 s 8.21 3.683 8.21 8.21 S 76.173 61.84 71.646 61.84 z M 71.646 47.42 c -3.424 0 -6.21 2.786 -6.21 6.21 s 2.786 6.21 6.21 6.21 s 6.21 -2.786 6.21 -6.21 S 75.069 47.42 71.646 47.42 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 17.305 61.84 c -4.527 0 -8.209 -3.683 -8.209 -8.21 s 3.683 -8.21 8.209 -8.21 s 8.21 3.683 8.21 8.21 S 21.832 61.84 17.305 61.84 z M 17.305 47.42 c -3.424 0 -6.209 2.786 -6.209 6.21 s 2.786 6.21 6.209 6.21 c 3.424 0 6.21 -2.786 6.21 -6.21 S 20.729 47.42 17.305 47.42 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 10.762 57.657 c -0.079 0 -0.158 -0.009 -0.238 -0.028 l -7.062 -1.721 c -2.164 -0.527 -3.614 -2.521 -3.449 -4.742 l 0.638 -8.606 c 0.118 -1.595 0.704 -3.1 1.694 -4.353 l 3.406 -4.315 c 2.876 -3.643 7.188 -5.732 11.829 -5.732 H 41.38 c 2.652 0 5.268 0.704 7.563 2.036 l 12.271 7.12 l 23.302 5.286 C 87.744 43.334 90 46.158 90 49.47 v 3.078 c 0 2.186 -1.639 4.011 -3.812 4.246 l -7.891 0.857 c -0.554 0.06 -1.043 -0.337 -1.103 -0.886 c -0.06 -0.55 0.337 -1.043 0.886 -1.103 l 7.892 -0.857 C 87.129 54.681 88 53.71 88 52.548 V 49.47 c 0 -2.371 -1.615 -4.393 -3.927 -4.917 l -23.451 -5.32 c -0.099 -0.022 -0.192 -0.06 -0.28 -0.11 l -12.402 -7.197 c -1.991 -1.155 -4.259 -1.765 -6.56 -1.765 H 17.579 c -4.025 0 -7.764 1.812 -10.259 4.972 l -3.406 4.315 c -0.741 0.939 -1.18 2.066 -1.269 3.261 l -0.638 8.606 c -0.092 1.241 0.719 2.355 1.929 2.65 l 7.062 1.721 c 0.537 0.131 0.866 0.672 0.735 1.208 C 11.621 57.351 11.212 57.657 10.762 57.657 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 65.103 57.657 H 23.85 c -0.552 0 -1 -0.447 -1 -1 s 0.448 -1 1 -1 h 41.252 c 0.553 0 1 0.447 1 1 S 65.655 57.657 65.103 57.657 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 51.252 41.503 H 20.133 c -1.85 0 -3.586 -0.905 -4.645 -2.422 c -1.059 -1.516 -1.31 -3.458 -0.672 -5.194 l 1.861 -5.072 c 0.19 -0.519 0.765 -0.783 1.284 -0.594 c 0.519 0.19 0.784 0.765 0.594 1.284 l -1.862 5.072 c -0.419 1.14 -0.26 2.364 0.435 3.36 c 0.695 0.996 1.791 1.566 3.005 1.566 h 31.119 c 2.792 0 5.507 -0.563 8.067 -1.675 l 1.126 -0.489 c 0.509 -0.22 1.096 0.013 1.315 0.52 c 0.221 0.506 -0.012 1.095 -0.519 1.315 l -1.126 0.489 C 57.302 40.884 54.319 41.503 51.252 41.503 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 71.649 54.63 c -0.14 0 -0.27 -0.03 -0.39 -0.08 s -0.229 -0.12 -0.32 -0.21 c -0.189 -0.19 -0.3 -0.44 -0.3 -0.71 c 0 -0.26 0.11 -0.521 0.3 -0.71 c 0.36 -0.37 1.04 -0.37 1.41 0 c 0.19 0.189 0.29 0.439 0.29 0.71 c 0 0.27 -0.1 0.52 -0.29 0.71 c -0.09 0.09 -0.2 0.16 -0.319 0.21 C 71.91 54.6 71.78 54.63 71.649 54.63 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 17.3 54.63 c -0.13 0 -0.26 -0.03 -0.38 -0.08 s -0.23 -0.12 -0.32 -0.21 c -0.19 -0.19 -0.29 -0.44 -0.29 -0.71 c 0 -0.13 0.02 -0.26 0.07 -0.38 c 0.05 -0.13 0.13 -0.23 0.22 -0.33 c 0.27 -0.28 0.72 -0.37 1.09 -0.21 c 0.12 0.05 0.23 0.12 0.32 0.21 c 0.19 0.189 0.3 0.45 0.3 0.71 c 0 0.27 -0.11 0.52 -0.3 0.71 S 17.57 54.63 17.3 54.63 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 36.115 41.503 c -0.507 0 -0.942 -0.384 -0.994 -0.899 l -1.149 -11.343 c -0.056 -0.549 0.345 -1.04 0.895 -1.096 c 0.552 -0.054 1.041 0.345 1.096 0.895 l 1.149 11.343 c 0.056 0.549 -0.345 1.04 -0.895 1.096 C 36.182 41.502 36.148 41.503 36.115 41.503 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            </g>
+                                            </svg>
+                                       {{-- <svg stroke="currentColor" xml:space="preserve" viewBox="0 0 467.168 467.168" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Capa_1" version="1.1" fill="none"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M76.849,210.531C34.406,210.531,0,244.937,0,287.388c0,42.438,34.406,76.847,76.849,76.847 c30.989,0,57.635-18.387,69.789-44.819l18.258,14.078c0,0,134.168,0.958,141.538-3.206c0,0-16.65-45.469,4.484-64.688 c2.225-2.024,5.021-4.332,8.096-6.777c-3.543,8.829-5.534,18.45-5.534,28.558c0,42.446,34.403,76.846,76.846,76.846 c42.443,0,76.843-34.415,76.843-76.846c0-42.451-34.408-76.849-76.843-76.849c-0.697,0-1.362,0.088-2.056,0.102 c5.551-3.603,9.093-5.865,9.093-5.865l-5.763-5.127c0,0,16.651-3.837,12.816-12.167c-3.848-8.33-44.19-58.28-44.19-58.28 s7.146-15.373-7.634-26.261l-7.098,15.371c0,0-18.093-12.489-25.295-10.084c-7.205,2.398-18.005,3.603-21.379,8.884l-3.358,3.124 c0,0-0.95,5.528,4.561,13.693c0,0,55.482,17.05,58.119,29.537c0,0,3.848,7.933-12.728,9.844l-3.354,4.328l-8.896,0.479 l-16.082-36.748c0,0-15.381,4.082-23.299,10.323l1.201,6.24c0,0-64.599-43.943-125.362,21.137c0,0-44.909,12.966-76.37-26.897 c0,0-0.479-12.968-76.367-10.565l5.286,5.524c0,0-5.286,0.479-7.444,3.841c-2.158,3.358,1.2,6.961,18.494,6.961 c0,0,39.153,44.668,69.17,42.032l42.743,20.656l18.975,32.42c0,0,0.034,2.785,0.23,7.045c-4.404,0.938-9.341,1.979-14.579,3.09 C139.605,232.602,110.832,210.531,76.849,210.531z M390.325,234.081c29.395,0,53.299,23.912,53.299,53.299 c0,29.39-23.912,53.294-53.299,53.294c-29.394,0-53.294-23.912-53.294-53.294C337.031,257.993,360.932,234.081,390.325,234.081z M76.849,340.683c-29.387,0-53.299-23.913-53.299-53.295c0-29.395,23.912-53.299,53.299-53.299 c22.592,0,41.896,14.154,49.636,34.039c-28.26,6.011-56.31,11.99-56.31,11.99l3.619,19.933l55.339-2.444 C124.365,322.116,102.745,340.683,76.849,340.683z M169.152,295.835c1.571,5.334,3.619,9.574,6.312,11.394l-24.696,0.966 c1.058-3.783,1.857-7.666,2.338-11.662L169.152,295.835z"></path> </g> </g> </g></svg> --}}
+                                    </span>
+                                    <span class="radio-label">Car</span>
+                                </span>
+                            </label>
+                            <label>
+                                <input class="radio-input" type="radio" name="car" value="limo">
+                                <span class="radio-tile">
+                                    <span class="radio-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+
+                                            <defs>
+                                            </defs>
+                                            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                                                <path d="M 78.97 57.433 c -3.421 0 -6.203 -2.783 -6.203 -6.204 c 0 -3.42 2.782 -6.203 6.203 -6.203 s 6.204 2.783 6.204 6.203 C 85.174 54.649 82.391 57.433 78.97 57.433 z M 78.97 47.025 c -2.317 0 -4.203 1.886 -4.203 4.203 c 0 2.318 1.886 4.204 4.203 4.204 c 2.318 0 4.204 -1.886 4.204 -4.204 C 83.174 48.911 81.288 47.025 78.97 47.025 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 11.682 57.433 c -3.421 0 -6.204 -2.783 -6.204 -6.204 c 0 -3.42 2.783 -6.203 6.204 -6.203 s 6.204 2.783 6.204 6.203 C 17.886 54.649 15.103 57.433 11.682 57.433 z M 11.682 47.025 c -2.318 0 -4.204 1.886 -4.204 4.203 c 0 2.318 1.886 4.204 4.204 4.204 c 2.318 0 4.204 -1.886 4.204 -4.204 C 15.886 48.911 14 47.025 11.682 47.025 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 6.958 54.414 c -0.137 0 -0.276 -0.028 -0.409 -0.088 l -3.914 -1.759 c -1.792 -0.805 -2.837 -2.656 -2.603 -4.605 l 0.736 -6.115 c 0.215 -1.786 1.734 -3.133 3.533 -3.133 h 3.905 l 4.948 -4.572 c 1.099 -1.016 2.527 -1.575 4.023 -1.575 h 38.987 c 2.494 0 4.952 0.662 7.108 1.914 l 8.098 4.698 l 11.016 1.918 C 86.798 41.865 90 45.673 90 50.15 v 0.338 c 0 1.697 -1.217 3.125 -2.894 3.394 l -3.257 0.52 c -0.545 0.091 -1.058 -0.285 -1.145 -0.83 s 0.284 -1.058 0.83 -1.145 l 3.256 -0.52 c 0.7 -0.112 1.209 -0.709 1.209 -1.419 V 50.15 c 0 -3.503 -2.505 -6.482 -5.957 -7.083 l -11.191 -1.949 c -0.116 -0.021 -0.228 -0.061 -0.33 -0.121 L 62.27 36.21 c -1.852 -1.075 -3.963 -1.643 -6.104 -1.643 H 17.178 c -0.991 0 -1.938 0.371 -2.666 1.043 l -5.236 4.838 c -0.185 0.171 -0.427 0.266 -0.679 0.266 H 4.301 c -0.788 0 -1.453 0.59 -1.547 1.372 L 2.018 48.2 c -0.129 1.077 0.448 2.099 1.437 2.543 l 3.914 1.759 c 0.504 0.227 0.729 0.818 0.502 1.322 C 7.704 54.194 7.339 54.414 6.958 54.414 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 74.247 54.414 H 16.406 c -0.552 0 -1 -0.447 -1 -1 s 0.448 -1 1 -1 h 57.841 c 0.553 0 1 0.447 1 1 S 74.8 54.414 74.247 54.414 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 64.985 42.754 H 22.889 c -1.486 0 -2.833 -0.693 -3.697 -1.902 s -1.083 -2.708 -0.601 -4.114 l 0.949 -2.771 c 0.179 -0.522 0.748 -0.803 1.27 -0.622 c 0.522 0.179 0.801 0.748 0.622 1.27 l -0.949 2.771 c -0.27 0.787 -0.146 1.626 0.337 2.303 s 1.238 1.065 2.07 1.065 h 42.097 c 1.39 0 2.74 -0.28 4.015 -0.833 l 1.625 -0.706 c 0.508 -0.22 1.097 0.013 1.315 0.52 c 0.22 0.506 -0.013 1.096 -0.519 1.315 l -1.626 0.706 C 68.269 42.418 66.65 42.754 64.985 42.754 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 78.97 52.229 c -0.13 0 -0.26 -0.029 -0.38 -0.08 c -0.12 -0.05 -0.23 -0.119 -0.33 -0.22 c -0.09 -0.09 -0.16 -0.2 -0.21 -0.32 c -0.06 -0.119 -0.08 -0.25 -0.08 -0.38 c 0 -0.26 0.11 -0.52 0.29 -0.71 c 0.37 -0.37 1.05 -0.37 1.42 0 c 0.18 0.19 0.29 0.45 0.29 0.71 c 0 0.13 -0.03 0.261 -0.08 0.38 c -0.05 0.12 -0.12 0.23 -0.21 0.32 c -0.1 0.101 -0.21 0.17 -0.33 0.22 C 79.229 52.2 79.1 52.229 78.97 52.229 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 11.68 52.229 c -0.26 0 -0.52 -0.109 -0.71 -0.3 c -0.09 -0.09 -0.16 -0.2 -0.21 -0.32 c -0.05 -0.119 -0.08 -0.25 -0.08 -0.38 s 0.03 -0.26 0.08 -0.38 c 0.05 -0.13 0.12 -0.24 0.21 -0.33 c 0.38 -0.37 1.05 -0.37 1.42 0 c 0.09 0.09 0.16 0.2 0.22 0.33 c 0.05 0.12 0.07 0.25 0.07 0.38 c 0 0.271 -0.1 0.521 -0.29 0.7 C 12.2 52.12 11.95 52.229 11.68 52.229 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 34.308 42.754 c -0.552 0 -1 -0.448 -1 -1 v -8.187 c 0 -0.552 0.448 -1 1 -1 s 1 0.448 1 1 v 8.187 C 35.308 42.307 34.86 42.754 34.308 42.754 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                <path d="M 49.846 42.754 c -0.553 0 -1 -0.448 -1 -1 v -8.187 c 0 -0.552 0.447 -1 1 -1 s 1 0.448 1 1 v 8.187 C 50.846 42.307 50.398 42.754 49.846 42.754 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            </g>
+                                            </svg>
+                                    {{-- <svg stroke="currentColor" xml:space="preserve" viewBox="0 0 324.018 324.017" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Capa_1" version="1.1" fill="none"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M317.833,197.111c3.346-11.148,2.455-20.541-2.65-27.945c-9.715-14.064-31.308-15.864-35.43-16.076l-8.077-4.352 l-0.528-0.217c-8.969-2.561-42.745-3.591-47.805-3.733c-7.979-3.936-14.607-7.62-20.475-10.879 c-20.536-11.413-34.107-18.958-72.959-18.958c-47.049,0-85.447,20.395-90.597,23.25c-2.812,0.212-5.297,0.404-7.646,0.59 l-6.455-8.733l7.34,0.774c2.91,0.306,4.267-1.243,3.031-3.459c-1.24-2.216-4.603-4.262-7.519-4.57l-23.951-2.524 c-2.91-0.305-4.267,1.243-3.026,3.459c1.24,2.216,4.603,4.262,7.519,4.57l3.679,0.386l8.166,11.05 c-13.823,1.315-13.823,2.139-13.823,4.371c0,18.331-2.343,22.556-2.832,23.369L0,164.443v19.019l2.248,2.89 c-0.088,2.775,0.823,5.323,2.674,7.431c5.981,6.804,19.713,7.001,21.256,7.001c4.634,0,14.211-2.366,20.78-4.153 c-0.456-0.781-0.927-1.553-1.3-2.392c-0.36-0.809-0.603-1.668-0.885-2.517c-0.811-2.485-1.362-5.096-1.362-7.845 c0-14.074,11.449-25.516,25.515-25.516s25.52,11.446,25.52,25.521c0,6.068-2.221,11.578-5.773,15.964 c-0.753,0.927-1.527,1.828-2.397,2.641c-1.022,0.958-2.089,1.859-3.254,2.641c29.332,0.109,112.164,0.514,168.708,1.771 c-0.828-0.823-1.533-1.771-2.237-2.703c-0.652-0.854-1.222-1.75-1.761-2.688c-2.164-3.744-3.5-8.025-3.5-12.655 c0-14.069,11.454-25.513,25.518-25.513c14.064,0,25.518,11.449,25.518,25.513c0,5.126-1.553,9.875-4.152,13.878 c-0.605,0.922-1.326,1.755-2.04,2.594c-0.782,0.922-1.616,1.781-2.527,2.584c5.209,0.155,9.699,0.232,13.546,0.232 c19.563,0,23.385-1.688,23.861-5.018C324.114,202.108,324.472,199.602,317.833,197.111z"></path> <path d="M52.17,195.175c3.638,5.379,9.794,8.922,16.756,8.922c0.228,0,0.44-0.062,0.663-0.073c2.576-0.083,5.043-0.61,7.291-1.574 c1.574-0.678,2.996-1.6,4.332-2.636c4.782-3.702,7.927-9.429,7.927-15.933c0-11.144-9.066-20.216-20.212-20.216 s-20.213,9.072-20.213,20.216c0,2.263,0.461,4.411,1.149,6.446c0.288,0.85,0.616,1.673,1.015,2.471 C51.279,193.606,51.667,194.434,52.17,195.175z"></path> <path d="M269.755,209.068c2.656,0,5.173-0.549,7.503-1.481c1.589-0.642,3.06-1.491,4.422-2.495 c1.035-0.767,1.988-1.616,2.863-2.559c3.34-3.604,5.432-8.389,5.432-13.681c0-11.144-9.071-20.21-20.215-20.21 s-20.216,9.066-20.216,20.21c0,4.878,1.812,9.3,4.702,12.801c0.818,0.989,1.719,1.89,2.708,2.713 c1.311,1.088,2.729,2.024,4.293,2.755C263.836,208.333,266.704,209.068,269.755,209.068z"></path> </g> </g> </g></svg> --}}
+                                    </span>
+                                    <span class="radio-label">Limo</span>
+                                </span>
+                            </label>
+                        </div>
                     </div>
-    
-                    <div class="md:col-span-3">
-                    <label for="address">Address / Street</label>
-                    <input type="text" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
-                    </div>
-    
-                    <div class="md:col-span-2">
-                    <label for="city">City</label>
-                    <input type="text" name="city" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
-                    </div>
-    
-                    <div class="md:col-span-2">
-                    <label for="country">Country / region</label>
-                    <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                        <input name="country" id="country" placeholder="Country" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" />
-                        <button tabindex="-1" class="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
-                        <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                        </button>
-                        <button tabindex="-1" for="show_more" class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
-                        <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-                        </button>
-                    </div>
-                    </div>
-    
-                    <div class="md:col-span-2">
-                    <label for="state">State / province</label>
-                    <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                        <input name="state" id="state" placeholder="State" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" />
-                        <button tabindex="-1" class="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
-                        <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                        </button>
-                        <button tabindex="-1" for="show_more" class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
-                        <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-                        </button>
-                    </div>
-                    </div>
-    
-                    <div class="md:col-span-1">
-                    <label for="zipcode">Zipcode</label>
-                    <input type="text" name="zipcode" id="zipcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" value="" />
-                    </div>
-    
-                    <div class="md:col-span-5">
+
+                    {{-- <div class="md:col-span-5">
                     <div class="inline-flex items-center">
                         <input type="checkbox" name="billing_same" id="billing_same" class="form-checkbox" />
                         <label for="billing_same" class="ml-2">My billing address is different than above.</label>
                     </div>
-                    </div>
-    
-                    <div class="md:col-span-2">
-                    <label for="soda">How many soda pops?</label>
-                    <div class="h-10 w-28 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                        <button tabindex="-1" for="show_more" class="cursor-pointer outline-none focus:outline-none border-r border-gray-200 transition-all text-gray-500 hover:text-blue-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                        </button>
-                        <input name="soda" id="soda" placeholder="0" class="px-2 text-center appearance-none outline-none text-gray-800 w-full bg-transparent" value="0" />
-                        <button tabindex="-1" for="show_more" class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-500 hover:text-blue-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2 fill-current" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                        </svg>
-                        </button>
-                    </div>
-                    </div>
-            
+                    </div> --}}
+
                     <div class="md:col-span-5 text-right">
                     <div class="inline-flex items-end">
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                     </div>
                     </div>
-    
+
                 </div>
                 </div>
-            </div>
+            </form>
             </div>
         </div>
 

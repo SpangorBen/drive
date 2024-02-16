@@ -36,10 +36,14 @@ class DriverRegisterController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $imageName = time() . '.' . $request->image->extension();
+        $imageUrl = $request->file('image')->storeAs('public/pics', $imageName);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'picture' => $imageName,
         ]);
 
         event(new Registered($user));
