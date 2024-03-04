@@ -16,9 +16,7 @@
     <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto">
         <div>
-            <h2 class="font-semibold text-xl text-gray-600">Dear driver complete your registration</h2>
-            <p class="text-gray-500 mb-6">Form is mobile responsive. Give it a try.</p>
-    
+            <h2 class="font-semibold text-xl text-gray-600">Dear driver complete your registration</h2>    
             <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
             <form action="{{ route('driver.update', ['user' => Auth::id()])}}" method="POST" class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">@csrf @method("PUT")
                 <div class="text-gray-600">
@@ -29,14 +27,23 @@
                 <div class="lg:col-span-2">
                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                     <div class="md:col-span-5">
-                    <label for="full_name">Little Description About You</label>
-                    <input type="text" name="description" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                        <label for="full_name">Little Description About You</label>
+                        <input type="text" name="description" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
                     </div>
 
                     <div class="md:col-span-5 mt-4">
-                    <label for="email">Immatrucilation</label>
-                    <input type="text" name="immat" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                        <label>Immatrucilation</label>
+                        <input type="text" name="immat" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
                     </div>
+
+                    <div class="md:col-span-5 mt-4">
+                        <label for="payment" class="">Payment Method</label>
+                        <select name="payment" id="payment" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="cash">Cash</option>
+                            <option value="card">Card</option>
+                        </select>
+                    </div>
+                    
 
                     <div class="md:col-span-2 mt-4">
                         Select Your Type Of Vehicle:

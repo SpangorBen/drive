@@ -14,7 +14,7 @@
     <title>@yield('title')</title>
 </head>
 
-<body>
+<body class="bg-gradient-to-r from-purple-700 to-blue-600">
     @yield('content')
     @yield('script')
 </body>

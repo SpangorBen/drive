@@ -14,6 +14,9 @@ class Route extends Model
     protected $fillable = [
         'pickup_city_id',
         'destination_city_id',
+        'distance',
+        'date',
+        'time'
     ];
 
     public function pickupCity()
@@ -29,5 +32,10 @@ class Route extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
     }
 }

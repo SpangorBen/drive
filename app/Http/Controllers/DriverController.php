@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\City;
+use App\Models\Route;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+
 
 class DriverController extends Controller{
 
     public function index(){
 
+        $user = auth()->user();
+
         $cities = City::all();
-        return view('driver.dashboard', compact('cities'));
+        // $routes = $user->route()->latest()->get();
+        $routes = Route::where('user_id', auth()->id())
+                   ->orderBy('date')
+                   ->get();
+
+        return view('driver.dashboard', compact('cities', 'routes'));
     }
 
     public function edit(){
@@ -34,11 +34,13 @@ class DriverController extends Controller{
             'description' => ['required', 'string', 'max:255'],
             'immat' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'car' => ['required', 'string', 'max:255'],
+            'payment' => ['required', 'string', 'max:255'],
         ]);
 
         $user->description = $request->description;
         $user->immat = $request->immat;
         $user->type = $request->car;
+        $user->payment = $request->payment;
         $user->save();
 
         return redirect()->route('driver.dashboard');

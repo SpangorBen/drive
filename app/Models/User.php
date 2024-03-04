@@ -50,4 +50,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Route::class);
     }
+
+    public function reservationsAsClient()
+    {
+        return $this->hasMany(Reservation::class, 'client_id');
+    }
+
+    public function reservationsAsDriver()
+    {
+        return $this->hasMany(Reservation::class, 'driver_id');
+    }
 }

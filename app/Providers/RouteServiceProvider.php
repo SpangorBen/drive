@@ -19,6 +19,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/dashboard';
 
+    public const DRIVER_HOME = '/driver/dashboard';
+
     public const DRIVER_FORM = '/driver/form';
 
     public const USER_FORM = '/user/form';
